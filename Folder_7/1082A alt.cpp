@@ -1,0 +1,101 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+int main()
+{
+    int t,n,x,y,d,i,a,j;
+    cin>>t;
+    for(i=1;i<=t;i++)
+    {
+        int ans1,ans2,ans3,b[3];
+        cin>>n>>x>>y>>d;
+        if(y>x)
+        {
+            ans1=(y-x+d)/d;
+            if((y-x+d)%d!=0)
+                ans1=-1;
+            else
+                ans1--;
+        }
+        else if(y<x)
+        {
+            ans1=(x+d-y)/d;
+            if((x+d-y)%d!=0)
+                ans1=-1;
+            else
+                ans1--;
+        }
+        else
+            ans1=0;
+        if(n==x){
+            ans2=0;
+            a=(n+d-y)/d;
+            if((n+d-y)%d!=0)
+            {
+                ans2=-1;
+            }
+            else
+                ans2=ans2+(a-1);
+        }
+        else
+        {
+            ans2=(n-x+d)/d;
+            if((n-x+d)%d==0)
+                ans2--;
+            if(n==y)
+                a=0;
+            else
+            {
+                a=(n+d-y)/d;
+                if((n+d-y)%d!=0)
+                {
+                    ans2=-1;
+                }
+                else
+                    ans2=ans2+(a-1);
+            }
+        }
+        if(x==1){
+            ans3=0;
+            a=(y-1+d)/d;
+            if((y-1+d)%d!=0)
+                ans3=-1;
+            else
+                ans3=ans3+(a-1);
+        }
+        else
+        {
+            ans3=(x+d-1)/d;
+            if((x+d-1)%d==0)
+                ans3--;
+            if(y==1)
+                a=0;
+            else
+            {
+                a=(y-1+d)/d;
+                if((y-1+d)%d!=0)
+                    ans3=-1;
+                else
+                    ans3=ans3+(a-1);
+            }
+        }
+        b[0]=ans1;
+        b[1]=ans2;
+        b[2]=ans3;
+        sort(b,b+3);
+        int k=0;
+        for(j=0;j<=2;j++)
+        {
+            if(b[j]!=-1)
+            {
+                k++;
+                cout<<b[j]<<endl;
+                break;
+            }
+        }
+        if(k==0)
+            cout<<"-1\n";
+        k=0;
+    }
+    return 0;
+}

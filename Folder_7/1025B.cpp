@@ -1,0 +1,77 @@
+#include<iostream>
+#include<cstring>
+#include<cmath>
+using namespace std;
+int main()
+{
+    int n,k=0,d=-1;
+    cin>>n;
+    long long int a[n],b[n],ct=0,i,j,c[44722],m=0;
+    memset(c,0,sizeof(c));
+    for(i=0;i<=n-1;i++)
+        cin>>a[i]>>b[i];
+    if(a[0]%2==0)
+    {
+        c[m]=2;
+        m++;
+        while(a[0]%2==0)
+            a[0]=a[0]/2;
+    }
+    for(i=3;i<=sqrt(a[0]);i=i+2)
+    {
+        if(a[0]%i==0)
+        {
+            c[m]=i;
+            m++;
+            while(a[0]%i==0)
+                a[0]=a[0]/i;
+        }
+    }
+    if(a[0]!=1)
+    {
+        c[m]=a[0];
+        m++;
+    }
+    if(b[0]%2==0)
+    {
+        c[m]=2;
+        m++;
+        while(b[0]%2==0)
+            b[0]=b[0]/2;
+    }
+    for(i=3;i<=sqrt(b[0]);i=i+2)
+    {
+        if(b[0]%i==0)
+        {
+            c[m]=i;
+            m++;
+            while(b[0]%i==0)
+                b[0]=b[0]/i;
+        }
+    }
+    if(b[0]!=1)
+    {
+        c[m]=b[0];
+        m++;
+    }
+    for(i=0;i<=m-1;i++)
+    {
+        for(j=1;j<=n-1;j++)
+        {
+            if(a[j]%c[i]==0||b[j]%c[i]==0)
+                ct++;
+            else
+                break;
+        }
+        if(ct==n-1)
+        {
+            k++;
+            cout<<c[i]<<endl;
+            break;
+        }
+        ct=0;
+    }
+    if(k==0)
+        cout<<d<<endl;
+    return 0;
+}

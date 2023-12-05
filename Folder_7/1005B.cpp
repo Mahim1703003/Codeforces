@@ -1,0 +1,69 @@
+#include<iostream>
+#include<cstring>
+using namespace std;
+int main()
+{
+    char a[200005],b[200005],c[200005];
+    int i,j,n1,n2,k=0;
+    cin>>a>>b;
+    if(strcmp(a,b)==0)
+        cout<<k<<endl;
+    else
+    {
+        n1=strlen(a);
+        n2=strlen(b);
+        if(n1>n2)
+        {
+            for(i=n1-n2,j=0;a[i]!='\0';i++,j++)
+                c[j]=a[i];
+            c[j]=a[i];
+            if(strcmp(c,b)==0)
+                cout<<n1-n2<<endl;
+            else
+            {
+                for(j=n2-1;j>=0;j--)
+                {
+                    if(c[j]==b[j])
+                        k=k+2;
+                    else
+                        break;
+                }
+                k=2*n2-k;
+                cout<<k+n1-n2<<endl;
+            }
+        }
+        else if(n2>n1)
+        {
+            for(i=n2-n1,j=0;b[i]!='\0';i++,j++)
+                c[j]=b[i];
+            c[j]=b[i];
+            if(strcmp(c,a)==0)
+                cout<<n2-n1<<endl;
+            else
+            {
+                for(j=n1-1;j>=0;j--)
+                {
+                    if(c[j]==a[j])
+                        k=k+2;
+                    else
+                        break;
+                }
+                k=2*n1-k;
+                cout<<k+n2-n1<<endl;
+            }
+        }
+        if(n1==n2)
+        {
+            for(j=n1-1;j>=0;j--)
+            {
+                if(a[j]==b[j])
+                    k=k+2;
+                else
+                    break;
+            }
+            k=2*n1-k;
+            cout<<k<<endl;
+        }
+    }
+    return 0;
+}
