@@ -1,0 +1,183 @@
+#include<stdio.h>
+int main()
+{
+    long long int n,i,j,temp;
+    long long int l;
+    double radi;
+    scanf("%lld %lld",&n,&l);
+    long long int a[n];
+    for(i=0;i<=n-1;i++)
+        scanf("%lld",&a[i]);
+    for(i=0;i<=n-2;i++)
+    {
+        for(j=i+1;j<=n-1;j++)
+        {
+            if(a[j]<a[i])
+            {
+                temp=a[i];
+                a[i]=a[j];
+                a[j]=temp;
+            }
+        }
+    }
+    if(a[0]!=0&&a[n-1]!=l)
+    {
+        int b[n+2];
+        b[0]=0;
+        b[n+1]=l;
+        for(i=1,j=0;i<=n,j<=n-1;i++,j++)
+            b[i]=a[j];
+        int c[n+1];
+        for(i=1;i<=n+1;i++)
+            c[i-1]=b[i]-b[i-1];
+        for(i=0;i<=n-1;i++)
+        {
+            for(j=i+1;j<=n;j++)
+            {
+                if(c[j]<c[i])
+                {
+                    temp=c[i];
+                    c[i]=c[j];
+                    c[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<=n;i++)
+        {
+            if(c[i]!=0&&c[i]!=1)
+            {
+                if(c[n]<2*c[i])
+                {
+                    radi=c[i]*1.0;
+                    printf("%lf\n",radi);
+                    break;
+                }
+                else
+                {
+                    radi=(c[n]*1.0)/(c[i]*1.0);
+                    printf("%lf\n",radi);
+                    break;
+                }
+            }
+        }
+    }
+    else if(a[0]==0&&a[n-1]==l)
+    {
+        int c[n-1];
+        for(i=1;i<=n-1;i++)
+            c[i-1]=a[i]-a[i-1];
+        for(i=0;i<=n-3;i++)
+        {
+            for(j=i+1;j<=n-2;j++)
+            {
+                if(c[j]<c[i])
+                {
+                    temp=c[i];
+                    c[i]=c[j];
+                    c[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<=n-2;i++)
+        {
+            if(c[i]!=0&&c[i]!=1)
+            {
+                if(c[n-2]<2*c[i])
+                {
+                    radi=c[i]*1.0;
+                    printf("%lf\n",radi);
+                    break;
+                }
+                else
+                {
+                    radi=(c[n-2]*1.0)/(c[i]*1.0);
+                    printf("%lf\n",radi);
+                    break;
+                }
+            }
+        }
+    }
+    else
+    {
+        if(a[0]!=0)
+        {
+            int b[n+1];
+            b[0]=0;
+            for(i=1,j=0;i<=n,j<=n-1;i++,j++)
+                b[i]=a[j];
+            int c[n];
+            for(i=1;i<=n;i++)
+            c[i-1]=b[i]-b[i-1];
+        for(i=0;i<=n-2;i++)
+        {
+            for(j=i+1;j<=n-1;j++)
+            {
+                if(c[j]<c[i])
+                {
+                    temp=c[i];
+                    c[i]=c[j];
+                    c[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<=n-1;i++)
+        {
+            if(c[i]!=0&&c[i]!=1)
+            {
+                if(c[n-1]<2*c[i])
+                {
+                    radi=c[i]*1.0;
+                    printf("%lf\n",radi);
+                    break;
+                }
+                else
+                {
+                    radi=(c[n-1]*1.0)/(c[i]*1.0);
+                    printf("%lf\n",radi);
+                    break;
+                }
+            }
+        }
+        }
+        else if(a[n-1]!=l)
+        {
+            int b[n+1];
+            b[n]=l;
+            for(i=0;i<=n-1;i++)
+                b[i]=a[i];
+            int c[n];
+        for(i=1;i<=n;i++)
+            c[i-1]=b[i]-b[i-1];
+        for(i=0;i<=n-2;i++)
+        {
+            for(j=i+1;j<=n-1;j++)
+            {
+                if(c[j]<c[i])
+                {
+                    temp=c[i];
+                    c[i]=c[j];
+                    c[j]=temp;
+                }
+            }
+        }
+        for(i=0;i<=n-1;i++)
+        {
+            if(c[i]!=0&&c[i]!=1)
+            {
+                if(c[n-1]<2*c[i])
+                {
+                    radi=c[i]*1.0;
+                    printf("%lf\n",radi);
+                    break;
+                }
+                else
+                {
+                    radi=(c[n-1]*1.0)/(c[i]*1.0);
+                    printf("%lf\n",radi);
+                    break;
+                }
+            }
+        }
+        }
+    }
+}

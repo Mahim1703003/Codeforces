@@ -1,0 +1,60 @@
+#include<stdio.h>
+int main()
+{
+    int n,m,i,j,temp;
+    scanf("%d %d",&n,&m);
+    int a[m][n],b[m][n],c[n],d[n];
+    for(i=0;i<=n-1;i++)
+        c[i]=0;
+    for(i=0;i<=m-1;i++)
+    {
+        for(j=0;j<=n-1;j++)
+        {
+            scanf("%d",&a[i][j]);
+            b[i][j]=a[i][j];
+        }
+    }
+    for(i=0;i<=m-1;i++)
+    {
+        for(j=1;j<=n-1;j++)
+        {
+            if(a[i][j]>a[i][0])
+            {
+                temp=a[i][0];
+                a[i][0]=a[i][j];
+                a[i][j]=temp;
+            }
+        }
+    }
+    for(i=0;i<=m-1;i++)
+    {
+        for(j=0;j<=n-1;j++)
+        {
+            if(a[i][0]==b[i][j])
+            {
+                c[j]++;
+                break;
+            }
+        }
+    }
+    for(i=0;i<=n-1;i++)
+        d[i]=c[i];
+    for(i=1;i<=n-1;i++)
+    {
+        if(c[i]>c[0])
+        {
+            temp=c[0];
+            c[0]=c[i];
+            c[i]=temp;
+        }
+    }
+    for(i=0;i<=n-1;i++)
+    {
+        if(c[0]==d[i])
+        {
+            printf("%d\n",i+1);
+            break;
+        }
+    }
+    return 0;
+}

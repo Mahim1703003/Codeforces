@@ -1,0 +1,75 @@
+#include<stdio.h>
+int main()
+{
+    int n,m,k=0;
+    scanf("%d %d",&n,&m);
+    if(n<=m)
+    {
+        if(n*2<=m)
+            printf("%d\n",n);
+        else
+        {
+            for(;;)
+            {
+                k++;
+                n--;
+                m=m-2;
+                if(n<0||m<0)
+                {
+                    k--;
+                    break;
+                }
+                if(n>m)
+                {
+                    for(;;)
+                    {
+                        k++;
+                        n=n-2;
+                        m--;
+                        if(n<0||m<0)
+                        {
+                            k--;
+                            break;
+                        }
+                    }
+                }
+            }
+            printf("%d\n",k);
+        }
+    }
+    else
+    {
+        if(m*2<=n)
+            printf("%d\n",m);
+        else
+        {
+            for(;;)
+            {
+                k++;
+                m--;
+                n=n-2;
+                if(m<0||n<0)
+                {
+                    k--;
+                    break;
+                }
+                if(m>n)
+                {
+                    for(;;)
+                    {
+                        k++;
+                        m=m-2;
+                        n--;
+                        if(m<0||n<0)
+                        {
+                            k--;
+                            break;
+                        }
+                    }
+                }
+            }
+            printf("%d\n",k);
+        }
+    }
+    return 0;
+}
