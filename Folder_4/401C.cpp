@@ -1,0 +1,113 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    long long int n,m,i,k=0;
+    cin>>n>>m;
+    //char a[n+1];
+    //a[i] = '\0';
+    //s = a;
+    //cout<<s<<endl;
+    if(m<=(2*n+2)&&n<=m+1){
+    if(n==m)
+    {
+        for(i=1;i<=n;i++)
+            cout<<"01";
+        cout<<endl;
+    }
+    else if(n==m+1)
+    {
+        for(i=1;i<=m;i++)
+            cout<<"01";
+        cout<<"0\n";
+    }
+    else
+    {
+        while(1)
+        {
+            if(m-n>=2&&n!=0)
+            {
+                cout<<"110";
+                m=m-2;
+                n--;
+            }
+            else
+            {
+                if(n!=0)
+                {
+                    cout<<"10";
+                    m--;
+                    n--;
+                }
+                else
+                {
+                    if(m!=0)
+                    {
+                        if(m==1)
+                            cout<<"1\n";
+                        else
+                            cout<<"11\n";
+                    }
+                    break;
+                }
+            }
+        }
+    }
+    /**else{
+    string s="0";
+        for(i=1;i<=n-1;i++)
+            s.insert(0,"0");
+    for(i=0;s[i]!='\0';i++)
+    {
+        if(s[i]=='0'&&m!=0)
+        {
+            //if(m!=0)
+            //{
+                s.insert(i+1,"1");
+                m--;
+                i++;
+            //}
+            //else
+                //break;
+        }
+        else
+                break;
+    }
+    if(m!=0)
+    {
+        for(i=0;s[i]!='\0';i++)
+        {
+            if(s[i]=='0'&&m!=0)
+            {
+                //if(m!=0)
+                //{
+                    s.insert(i+1,"1");
+                    m--;
+                    i=i+2;
+                //}
+                //else
+                   // break;
+            }
+            else
+                    break;
+        }
+    }
+    if(m!=0)
+    {
+        if(m==1)
+        {
+            s.insert(0,"1");
+        }
+        else
+        {
+            s.insert(0,"11");
+        }
+    }
+    cout<<s<<endl;
+    }**/
+    }
+    else
+        cout<<"-1\n";
+    return 0;
+}
